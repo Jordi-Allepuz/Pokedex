@@ -1,4 +1,27 @@
 package com.example.pokedex
 
-object AppModule {
+import android.app.Application
+import android.content.Context
+import com.example.pokedex.pokedexapp.data.sources.local.PokemonLocalDataSource
+import com.example.pokedex.pokedexapp.domain.repositories.PokemonRepository
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+object AppModule{
+
+
+    @Provides
+    @Singleton
+    fun providePokemonRepository(dataSource: PokemonLocalDataSource): PokemonRepository {
+        return PokemonRepository(dataSource)
+    }
+
+    @Provides
+    @Singleton
+    fun provideApplicationContext(app: Application): Context = app
 }
