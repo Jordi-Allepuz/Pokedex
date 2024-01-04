@@ -1,8 +1,10 @@
 package com.example.pokedex.pokedexapp.ui.screens
 
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -22,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
@@ -88,20 +92,113 @@ fun PokemonPantallaFicha(viewModel: PokemonViewModel) {
     }
 }
 
-@Composable
-fun Stats(pokemon: Pokemon) {
 
-}
 
-@Composable
-fun PesoAltura(pokemon: Pokemon) {
-    TODO("Not yet implemented")
-}
 
 @Composable
 fun Tipos(pokemon: Pokemon) {
-    TODO("Not yet implemented")
+    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+        pokemon.types.forEach { tipo ->
+            Box(
+                modifier = Modifier
+                    .width(200.dp)
+                    .padding(horizontal = 25.dp)
+                    .clip(CircleShape)
+                    .background(tipoColores(tipo))
+                    .height(35.dp), contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = tipo.type.name, color = Color.White,
+                    fontSize = 20.sp, textAlign = TextAlign.Center, fontWeight = FontWeight.Bold
+                )
+            }
+        }
+    }
 }
+
+
+
+
+@Composable
+fun PesoAltura(pokemon: Pokemon) {
+    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "${pokemon.weight / 10.0} KG",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Text(text = "Weight", color = Color.White)
+        }
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "${pokemon.height / 10.0} M",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Text(text = "Height", color = Color.White)
+        }
+    }
+}
+
+
+
+
+@Composable
+fun Stats(pokemon: Pokemon) {
+
+    val maxStat = pokemon.stats.maxOf { it.baseStat }.toFloat()
+
+    Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        pokemon.stats.forEach { stat ->
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = abreviaturasEstados(stat),
+                    color = Color.White,
+                    modifier = Modifier
+                        .padding(start = 30.dp)
+                        .weight(1f)
+                )
+                Box(
+                    modifier = Modifier.weight(3f)
+                        .padding(start = 20.dp, end = 50.dp)
+                        .clip(CircleShape)
+                        .background(Color.White)
+                        .height(20.dp)
+                ) {
+                    val barraStat = (stat.baseStat.toFloat() / maxStat).coerceIn(0f, 1f)
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(barraStat)
+                            .clip(CircleShape)
+                            .background(estadosColores(stat))
+                            .height(20.dp), horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "${(stat.baseStat)}/${maxStat.toInt()}",
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 
 
 @OptIn(ExperimentalCoilApi::class)
