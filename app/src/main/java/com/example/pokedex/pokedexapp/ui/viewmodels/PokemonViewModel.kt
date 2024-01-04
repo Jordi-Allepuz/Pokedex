@@ -17,7 +17,7 @@ class PokemonViewModel @Inject constructor(private val getPokemonUseCase: GetPok
         private set
 
     init {
-        loadPokemon("ditto.json")
+        loadPokemon("squirtle.json")
     }
 
     private fun loadPokemon(jsonNombre: String) {
