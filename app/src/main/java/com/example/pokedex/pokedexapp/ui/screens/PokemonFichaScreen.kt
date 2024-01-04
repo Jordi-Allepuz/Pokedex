@@ -88,9 +88,20 @@ fun PokemonPantallaFicha(viewModel: PokemonViewModel) {
     }
 }
 
+@Composable
+fun Stats(pokemon: Pokemon) {
 
+}
 
+@Composable
+fun PesoAltura(pokemon: Pokemon) {
+    TODO("Not yet implemented")
+}
 
+@Composable
+fun Tipos(pokemon: Pokemon) {
+    TODO("Not yet implemented")
+}
 
 
 @OptIn(ExperimentalCoilApi::class)
