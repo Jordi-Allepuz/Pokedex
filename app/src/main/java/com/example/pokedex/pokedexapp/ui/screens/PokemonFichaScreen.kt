@@ -1,6 +1,8 @@
 package com.example.pokedex.pokedexapp.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,6 +32,66 @@ import androidx.compose.ui.unit.sp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.pokedex.pokedexapp.data.dataInfo.Pokemon
+import com.example.pokedex.pokedexapp.ui.viewmodels.PokemonViewModel
+
+
+@Composable
+fun PokemonPantallaFicha(viewModel: PokemonViewModel) {
+
+    val pokemon = viewModel.pokemon.value!!
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFF272727)),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Cabecera(pokemon = pokemon)
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(16.dp)
+        )
+        Text(
+            text = pokemon.name,
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
+            fontSize = 40.sp,
+            modifier = Modifier.padding(10.dp)
+        )
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(8.dp)
+        )
+        Tipos(pokemon = pokemon)
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(25.dp)
+        )
+        PesoAltura(pokemon = pokemon)
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(30.dp)
+        )
+        Text(
+            text = "Base Stats",
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
+            fontSize = 30.sp,
+            modifier = Modifier.padding(4.dp)
+        )
+        Stats(pokemon = pokemon)
+    }
+}
+
+
+
+
+
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
