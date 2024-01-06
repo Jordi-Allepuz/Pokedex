@@ -1,6 +1,9 @@
 package com.example.pokedex.pokedexapp.ui.screens
 
 
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +26,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -178,15 +186,28 @@ fun Stats(pokemon: Pokemon) {
                 ) {
                     val barraStat = (stat.baseStat.toFloat() / maxStat).coerceIn(0f, 1f)
 
+                    var animacionActivada by remember {
+                        mutableStateOf(false)
+                    }
+                    // Animación para cada barra
+                    val valorbarraAnimada by animateFloatAsState(
+                        targetValue =  if (animacionActivada) barraStat else 0f,
+                        animationSpec = tween(durationMillis = 2000, easing = LinearOutSlowInEasing )
+                    )
+
+                    LaunchedEffect(key1 = true) {
+                        animacionActivada = true
+                    }
+
                     Row(
                         modifier = Modifier
-                            .fillMaxWidth(barraStat)
+                            .fillMaxWidth(valorbarraAnimada)
                             .clip(CircleShape)
                             .background(estadosColores(stat))
                             .height(20.dp), horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text = "${(stat.baseStat)}/${maxStat.toInt()}",
+                            text = "${(valorbarraAnimada * stat.baseStat).toInt()}/${maxStat.toInt()}",
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
