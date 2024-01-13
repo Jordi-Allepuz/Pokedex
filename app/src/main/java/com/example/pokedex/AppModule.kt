@@ -2,6 +2,7 @@ package com.example.pokedex
 
 import android.app.Application
 import android.content.Context
+import com.example.pokedex.pokedexapp.data.repositories.PokemonRepositoryImpl
 import com.example.pokedex.pokedexapp.data.sources.local.PokemonLocalDataSource
 import com.example.pokedex.pokedexapp.domain.repositories.PokemonRepository
 import dagger.Module
@@ -17,8 +18,8 @@ object AppModule{
 
     @Provides
     @Singleton
-    fun providePokemonRepository(dataSource: PokemonLocalDataSource): PokemonRepository {
-        return PokemonRepository(dataSource)
+    fun providePokemonRepository(dataSource: PokemonLocalDataSource): PokemonRepositoryImpl {
+        return PokemonRepositoryImpl(dataSource)
     }
 
     @Provides
