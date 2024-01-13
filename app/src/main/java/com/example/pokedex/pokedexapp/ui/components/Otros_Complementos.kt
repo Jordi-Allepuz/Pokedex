@@ -1,4 +1,4 @@
-package com.example.pokedex.pokedexapp.ui.screens
+package com.example.pokedex.pokedexapp.ui.components
 
 import androidx.compose.ui.graphics.Color
 import com.example.pokedex.pokedexapp.data.dataInfo.Stat
