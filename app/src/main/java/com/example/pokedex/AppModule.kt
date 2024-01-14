@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import com.example.pokedex.pokedexapp.data.repositories.PokemonRepositoryImpl
 import com.example.pokedex.pokedexapp.data.sources.local.PokemonLocalDataSource
-import com.example.pokedex.pokedexapp.domain.repositories.PokemonRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
