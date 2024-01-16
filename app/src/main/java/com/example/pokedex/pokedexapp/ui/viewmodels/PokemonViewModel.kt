@@ -10,17 +10,19 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PokemonViewModel @Inject constructor(private val getPokemonUseCase: GetPokemoUseCase):
-    ViewModel(){
+class PokemonViewModel @Inject constructor(private val getPokemonUseCase: GetPokemoUseCase) :
+    ViewModel() {
 
     var pokemon = mutableStateOf<Pokemon?>(null)
         private set
 
+
     init {
-        loadPokemon("squirtle.json")
+        loadPokemon("charizard.json")
     }
 
-    private fun loadPokemon(jsonNombre: String) {
+
+    fun loadPokemon(jsonNombre: String) {
         viewModelScope.launch {
             pokemon.value = getPokemonUseCase.execute(jsonNombre)
         }
