@@ -1,7 +1,7 @@
 package com.example.pokedex.pokedexapp.data.repositories
 
-import com.example.pokedex.pokedexapp.data.dataInfo.Pokemon
 import com.example.pokedex.pokedexapp.data.sources.local.PokemonLocalDataSource
+import com.example.pokedex.pokedexapp.domain.models.Pokemon
 import com.example.pokedex.pokedexapp.domain.repositories.PokemonRepository
 import javax.inject.Inject
 

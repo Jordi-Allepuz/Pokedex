@@ -1,7 +1,8 @@
 package com.example.pokedex.pokedexapp.domain.usecases
 
-import com.example.pokedex.pokedexapp.data.dataInfo.Pokemon
+import com.example.pokedex.pokedexapp.data.dataInfo.PokemonDTO
 import com.example.pokedex.pokedexapp.data.repositories.PokemonRepositoryImpl
+import com.example.pokedex.pokedexapp.domain.models.Pokemon
 import javax.inject.Inject
 
 class GetPokemoUseCase @Inject constructor(private val repository: PokemonRepositoryImpl){

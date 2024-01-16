@@ -1,7 +1,9 @@
 package com.example.pokedex.pokedexapp.data.sources.local
 
 import android.content.Context
-import com.example.pokedex.pokedexapp.data.dataInfo.Pokemon
+import com.example.pokedex.pokedexapp.data.dataInfo.PokemonDTO
+import com.example.pokedex.pokedexapp.data.mappers.DTOToModel
+import com.example.pokedex.pokedexapp.domain.models.Pokemon
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -11,7 +13,8 @@ class PokemonLocalDataSource @Inject constructor(@ApplicationContext private val
 
     fun getPokemonFromJson(jsonNombre: String): Pokemon {
         val jsonString = readJsonFromAssets(context, jsonNombre)
-        return parseJsonToModel(jsonString)
+        var pokemonDTO = parseJsonToModel(jsonString)
+        return DTOToModel(pokemonDTO)
     }
 
     fun readJsonFromAssets(context: Context, fileName: String): String {
@@ -19,9 +22,9 @@ class PokemonLocalDataSource @Inject constructor(@ApplicationContext private val
     }
 
 
-    fun parseJsonToModel(jsonString: String): Pokemon {
+    fun parseJsonToModel(jsonString: String): PokemonDTO {
         val gson = Gson()
-        return gson.fromJson(jsonString, object : TypeToken<Pokemon>() {}.type)
+        return gson.fromJson(jsonString, object : TypeToken<PokemonDTO>() {}.type)
     }
 
 

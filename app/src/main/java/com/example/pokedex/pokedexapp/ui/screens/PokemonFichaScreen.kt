@@ -19,19 +19,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.pokedex.pokedexapp.data.dataInfo.Pokemon
 import com.example.pokedex.pokedexapp.ui.components.Cabecera
 import com.example.pokedex.pokedexapp.ui.components.PesoAltura
 import com.example.pokedex.pokedexapp.ui.components.Stats
 import com.example.pokedex.pokedexapp.ui.components.Tipos
 import com.example.pokedex.pokedexapp.ui.viewmodels.PokemonViewModel
 import androidx.compose.runtime.livedata.observeAsState
+import com.example.pokedex.pokedexapp.domain.models.Pokemon
 
 
 @Composable
 fun PokemonPantallaFicha(viewModel: PokemonViewModel) {
 
-//    val pokemon = viewModel.pokemon.value!!
     val pokemon: Pokemon? by viewModel.pokemon.observeAsState()
 
     Column(
