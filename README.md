@@ -10,3 +10,11 @@ Jordi Allepuz Janoher  2CFSF  DAM  I.E.S El Caminas
 Extraer datos desde un Json, el cual contiene datos sobre un Pokemon y mostrarlos en una interfaz. 
 
 ## Capturas de pantalla
+
+<p align="right">
+ <img src="https://github.com/Jordi-Allepuz/Pokedex/blob/master/app/src/main/res/drawable/captura2.png">
+</p>
+
+<p align="left">
+ <img src="https://github.com/Jordi-Allepuz/Pokedex/blob/master/app/src/main/res/drawable/captura1.png">
+</p>
