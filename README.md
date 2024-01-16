@@ -1,7 +1,7 @@
 # PokedexApp
 
 <p align="center">
- <img src="">
+ <img src="https://github.com/Jordi-Allepuz/Pokedex/blob/master/app/src/main/res/drawable/pokedexlogo.webp">
 </p>
  
 Jordi Allepuz Janoher  2CFSF  DAM  I.E.S El Caminas
