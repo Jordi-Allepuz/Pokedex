@@ -29,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import com.example.pokedex.pokedexapp.data.dataInfo.PokemonDTO
 import com.example.pokedex.pokedexapp.domain.models.Pokemon
 
 @OptIn(ExperimentalCoilApi::class)

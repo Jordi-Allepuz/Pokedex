@@ -24,7 +24,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.pokedex.pokedexapp.data.dataInfo.PokemonDTO
 import com.example.pokedex.pokedexapp.domain.models.Pokemon
 
 @Composable

@@ -1,6 +1,5 @@
 package com.example.pokedex.pokedexapp.domain.models
 
-
 import com.example.pokedex.pokedexapp.data.dataInfo.Stat
 import com.example.pokedex.pokedexapp.data.dataInfo.Type
 
