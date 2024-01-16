@@ -15,9 +15,6 @@ import javax.inject.Inject
 class PokemonViewModel @Inject constructor(private val getPokemonUseCase: GetPokemoUseCase):
     ViewModel(){
 
-//    var pokemon = mutableStateOf<Pokemon?>(null)
-//        private set
-
     private val _pokemon = MutableLiveData<Pokemon>()
     val pokemon: LiveData<Pokemon> = _pokemon
 
