@@ -1,6 +1,8 @@
 package com.example.pokedex.pokedexapp.ui.viewmodels
 
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.pokedexapp.data.dataInfo.Pokemon
@@ -13,8 +15,11 @@ import javax.inject.Inject
 class PokemonViewModel @Inject constructor(private val getPokemonUseCase: GetPokemoUseCase):
     ViewModel(){
 
-    var pokemon = mutableStateOf<Pokemon?>(null)
-        private set
+//    var pokemon = mutableStateOf<Pokemon?>(null)
+//        private set
+
+    private val _pokemon = MutableLiveData<Pokemon>()
+    val pokemon: LiveData<Pokemon> = _pokemon
 
     init {
         loadPokemon("squirtle.json")
@@ -22,7 +27,7 @@ class PokemonViewModel @Inject constructor(private val getPokemonUseCase: GetPok
 
     private fun loadPokemon(jsonNombre: String) {
         viewModelScope.launch {
-            pokemon.value = getPokemonUseCase.execute(jsonNombre)
+            _pokemon.value = getPokemonUseCase.execute(jsonNombre)
         }
     }
 
