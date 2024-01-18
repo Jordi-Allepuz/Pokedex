@@ -1,6 +1,6 @@
 package com.example.pokedex.pokedexapp.ui.viewmodels
 
-import androidx.compose.runtime.mutableStateOf
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
