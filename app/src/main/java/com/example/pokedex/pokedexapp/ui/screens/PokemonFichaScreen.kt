@@ -12,12 +12,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pokedex.pokedexapp.data.dataInfo.Pokemon
 import com.example.pokedex.pokedexapp.ui.components.Cabecera
 import com.example.pokedex.pokedexapp.ui.components.PesoAltura
 import com.example.pokedex.pokedexapp.ui.components.Stats
@@ -28,7 +31,8 @@ import com.example.pokedex.pokedexapp.ui.viewmodels.PokemonViewModel
 @Composable
 fun PokemonPantallaFicha(viewModel: PokemonViewModel) {
 
-    val pokemon = viewModel.pokemon.value!!
+//    val pokemon = viewModel.pokemon.value!!
+    val pokemon: Pokemon? by viewModel.pokemon.observeAsState()
 
     Column(
         modifier = Modifier
@@ -37,14 +41,14 @@ fun PokemonPantallaFicha(viewModel: PokemonViewModel) {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Cabecera(pokemon = pokemon)
+        Cabecera(pokemon = pokemon!!)
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(16.dp)
         )
         Text(
-            text = pokemon.name,
+            text = pokemon!!.name,
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontSize = 40.sp,
@@ -55,13 +59,13 @@ fun PokemonPantallaFicha(viewModel: PokemonViewModel) {
                 .fillMaxWidth()
                 .height(8.dp)
         )
-        Tipos(pokemon = pokemon)
+        Tipos(pokemon = pokemon!!)
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(25.dp)
         )
-        PesoAltura(pokemon = pokemon)
+        PesoAltura(pokemon = pokemon!!)
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
@@ -74,7 +78,7 @@ fun PokemonPantallaFicha(viewModel: PokemonViewModel) {
             fontSize = 30.sp,
             modifier = Modifier.padding(4.dp)
         )
-        Stats(pokemon = pokemon)
+        Stats(pokemon = pokemon!!)
     }
 }
 
