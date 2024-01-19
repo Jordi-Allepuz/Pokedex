@@ -19,6 +19,7 @@ class PokemonViewModel @Inject constructor(private val getPokemonUseCase: GetPok
     val pokemon: LiveData<Pokemon> = _pokemon
 
 
+    //Aquí pondremos el nombre del Json que queremos cargar, en la carpeta Assets tenemos 5 archivos para probar distintos Pokemon
     init {
         loadPokemon("squirtle.json")
     }
